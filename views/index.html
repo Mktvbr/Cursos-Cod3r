@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body{
+            background-color: rgb(27, 27, 63);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .cabecalho {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: black;
+            height: 70px;
+            border-bottom: solid 4px rgb(6, 8, 115);
+            padding: 0 20px;
+        }
+        .logo {
+            display: inline-block;
+            height: 60px;
+        }
+        .logo img {
+            height: 100%;
+        }
+        
+        .menu {
+            margin-left: -350px;
+        }
+        .menu ul, .autenticacao ul {
+
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu ul li{
+
+            margin-right: 10px;
+            background-color: rgb(6, 8, 115);
+            border: solid 2px rgb(20, 5, 226);
+            border-radius: 2px;
+        }
+        .autenticacao ul li {
+            margin-right: 10px;
+            background-color: rgb(6, 8, 115);
+            border: solid 2px rgb(20, 5, 226);
+            border-radius: 2px;
+        }
+        
+        .menu ul li a, .autenticacao ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.3em;
+            padding: 10px 15px;
+        }
+
+        .menu ul li:hover , .autenticacao ul li:hover {
+            background-color: rgb(27, 27, 63);
+            border: solid 2px rgb(6, 8, 115);;
+        }
+
+        .texto {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 80px;
+            font-weight: bold;
+            color: rgb(11, 124, 222);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .texto span{
+            position: relative;
+        }
+        .digitacao {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        
+        .texto span::before{
+            content: "";
+            color: rgb(11, 124, 222);
+            animation: palavras 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="file:///C:/Users/teta1/Desktop/repositorio/site/inicio.html">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo">
+            </a>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="http://localhost:3003">Início</a></li>
+                <li><a href="http://localhost:3003/cursos">Cursos</a></li>
+                <li><a href="http://localhost:3003/contato">Contato</a></li>
+            </ul>
+        </nav>
+        <nav class="autenticacao">
+            <ul>
+                <li><a href="http://localhost:3003/login">Login</a></li>
+                <li><a href="http://localhost:3003/registrar">Registrar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="texto">
+        <img src="../public/imagens/cod3r.png" alt=""
+            width="200" height="200" align="center"
+        ><span id="digitacao"></span>
+    </div>
+</body>
+
+<script>
+     const texto = "SEJA BEM-VINDO";
+        let i = 0;
+
+        function digitar() {
+            if (i < texto.length) {
+                document.getElementById("digitacao").innerHTML += texto.charAt(i);
+                i++;
+                setTimeout(digitar, 200); // Tempo entre cada letra
+            }
+        }
+
+        window.onload = function() {
+            setTimeout(digitar, 500);
+        };
+
+        
+</script>
+</html>
