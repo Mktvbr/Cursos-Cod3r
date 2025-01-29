@@ -4,13 +4,15 @@ const bodyParser = require('body-parser')
 const db = require('./db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const port = 3003
 var path = require('node:path')
+
+const port = 3003
 const app = express()
 
 app.use(session({secret: 's4g134gre25y5y54h6'}))
 
-app.engine('html', require('ejs').renderFile);
+app.engine('html', require('ejs').renderFile)
+app.use(express.json())
 app.use(bodyParser.urlencoded({extend:true}));
 
 app.set('view engine','html');
@@ -41,20 +43,38 @@ app.post('/registrar', async (req, res) => {
 )
 
 app.post('/login', async (req, res) => {
+
+    const {email, password} = req.body
+    const usuario = await db.findCustomerEmail({email})
+
+    function tokenResult (){
+        const secret = process.env.SECRET
+
+        const token = jwt.sign(
+            {
+                id: usuario._id,
+            },
+            secret,
+        )
+        res.status(200).json({ msg: "Autenticação realizada com sucesso", token })
+    }
+
     try {
 
-        const {email, password} = req.body
-        const usuario = await db.findCustomerEmail({email})
+
+
 
         if (!usuario) {
             return res.status(401).json({ error: "Usuário ou senha incorretos!" });
         }
+
+        //compara a senha que usuario passou com a criptografada do banco de dados
         const senhaCorreta = await bcrypt.compare(password, usuario.password)
         if (!senhaCorreta) {
-            return res.status(401).json({ error: "Senha incorreta!" });
+            return res.status(400).json({ error: "Senha incorreta!" });
         }
 
-        res.redirect('/'); 
+        tokenResult()
 
     } catch (error) {
         console.error(error);

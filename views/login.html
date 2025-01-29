@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio Menu</title>
+    <title>COD3R</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
@@ -25,14 +25,18 @@
         .logo {
             display: inline-block;
             height: 60px;
+            margin-right: 20px;
         }
         .logo img {
             height: 100%;
         }
         
         .menu {
-            margin-left: -350px;
+            display: flex;
+            flex-grow: 1;
+            justify-content: flex-start;
         }
+
         .menu ul, .autenticacao ul {
 
             display: flex;
@@ -108,6 +112,11 @@
             display: none;
         }
 
+        #errorRequired {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
     
 
     </style>
@@ -134,50 +143,65 @@
             </ul>
         </nav>
     </header>
-    <div class="form-container" id = "loginForm">
-        <form action="/login" method="POST">
+    <div class="form-container" >
+        <form action="/login" id = "loginForm">
             <label for="email">Usuário:</label>
             <input type="email" id="email" name="email" placeholder="Digite seu usuário" required>
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
             <input type="submit" name="acao" value="Logar">
         </form> 
-        <div id="errorRequired" class="hidden" style="color: red; margin-top: 10px;"></div>
+        <div id="errorRequired" class="hidden"></div>
     </div>
 
 </body>
     <script>
-        const loginForm = document.getElementById("loginForm");
+        //recebe informações do formulário
+    const loginForm = document.getElementById("loginForm"); 
     const errorDiv = document.getElementById("errorRequired");
 
+        //addEventListener fará que seja executado só após o submite
     loginForm.addEventListener("submit", async (event) => {
-        event.preventDefault(); // Impede o envio padrão do formulário
+        event.preventDefault(); // Impede o envio padrão do formulário        
 
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+        //pegará o que foi digitado pelo usuário
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-        try {
-            const response = await fetch("/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
-            });
+    try {
 
-            if (response.status === 401) {
-                const errorMessage = response.body.error;
-                errorDiv.textContent = errorMessage; // Exibe a mensagem de erro
-                errorDiv.classList.remove("hidden");
-            } else if (response.ok) {
-                window.location.href = "/"; // Redireciona para a página inicial
-            } else {
-                errorDiv.textContent = "Erro ao processar o login. Tente novamente.";
-                errorDiv.classList.remove("hidden");
-            }
-        } catch (error) {
-            console.error("Erro no login:", error);
-            errorDiv.textContent = "Erro inesperado. Tente novamente.";
+        //passará as informações do front pro back end
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (!response.ok) {
+            const data = await response.json();
+
+        //irá passar o erro do servidor para a div
+            errorDiv.textContent = data.error || "Erro ao processar o login. Tente novamente.";
+
+        //irá remover o hidden que está fazendo o erro não aparecer
             errorDiv.classList.remove("hidden");
+
+        } else {
+        //se não houver erros irá direcionar para a pagina inicial e mandar o token para o cookie
+            const data = await response.json()
+            document.cookie = `tokenAutentication=${data.tokenAutentication}; path=/; max-age=${60 * 60}`
+            window.location.href = "/";
         }
+
+        //caso acha algum outro e sai do try o catch será chamado
+    } catch (error) {
+        console.error("Erro no login:", error);
+        errorDiv.textContent = "Erro inesperado. Tente novamente.";
+        errorDiv.classList.remove("hidden");
+    }
     });
+
+
+    
     </script>
 </html>

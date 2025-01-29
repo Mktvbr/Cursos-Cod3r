@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio Menu</title>
+    <title>COD3R</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
@@ -25,13 +25,16 @@
         .logo {
             display: inline-block;
             height: 60px;
+            margin-right: 20px;
         }
         .logo img {
             height: 100%;
         }
         
         .menu {
-            margin-left: -350px;
+            display: flex;
+            flex-grow: 1;
+            justify-content: flex-start;
         }
         .menu ul, .autenticacao ul {
 
@@ -124,6 +127,51 @@
         >
         </a>
     </div>
-    
+    <script>
+
+    //irá pegar o token do cookie
+function getCookie(cname) {
+    let name = cname + "=";
+
+    //irá ler e decodificar os cookies
+    let decodedCookie = decodeURIComponent(document.cookie);
+
+    //cria uma array de cookies 
+    let ca = decodedCookie.split(';');
+
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+
+    //verifica se o primeiro caractere do cookie é um espaço e já o remove
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+
+    //verifica a posição do cookie que tem o mesmo nome
+      if (c.indexOf(name) == 0) {
+
+    //remove o nome e mantém só o valor
+        return c.substring(name.length, c.length);
+      }
+    }
+
+    //se nenhum cookie for encontrado irá retornar uma string vazia
+    return "";
+  }
+
+function checkCookie() {
+    //usa a função getCookie para verificar se existe ou não o token
+        let verifyAutentication = getCookie("tokenAutentication");
+
+    //se existir token os botões de login e rigistro irão sumir
+        if (verifyAutentication != "") {
+        let div = document.querySelector(".autenticacao")
+        div.style.display = "none"
+  }
+
+}    
+
+checkCookie()
+    </script>
 </body>
 </html>
