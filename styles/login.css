@@ -1,0 +1,110 @@
+body{
+    background-color: rgb(27, 27, 63);
+}
+* {
+    box-sizing: border-box;
+}
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    height: 70px;
+    border-bottom: solid 4px rgb(6, 8, 115);
+    padding: 0 20px;
+}
+.logo {
+    display: inline-block;
+    height: 60px;
+    margin-right: 20px;
+}
+.logo img {
+    height: 100%;
+}
+
+.menu {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+}
+
+.menu ul, .autenticacao ul {
+
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu ul li{
+
+    margin-right: 10px;
+    background-color: rgb(6, 8, 115);
+    border: solid 2px rgb(20, 5, 226);
+    border-radius: 2px;
+}
+.autenticacao ul li {
+    margin-right: 10px;
+    background-color: rgb(6, 8, 115);
+    border: solid 2px rgb(20, 5, 226);
+    border-radius: 2px;
+}
+
+.menu ul li a, .autenticacao ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 1.3em;
+    padding: 10px 15px;
+}
+
+.menu ul li:hover , .autenticacao ul li:hover {
+    background-color: rgb(27, 27, 63);
+    border: solid 2px rgb(6, 8, 115);;
+}
+
+.form-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(11, 124, 222);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.form-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+}
+
+.form-container input[type="submit"] {
+    background: rgb(6, 8, 115);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.form-container input[type="submit"]:hover {
+    background: rgb(27, 27, 63);
+}
+
+.hidden{
+    display: none;
+}
+
+#errorRequired {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+}

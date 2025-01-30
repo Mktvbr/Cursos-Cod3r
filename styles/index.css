@@ -1,0 +1,93 @@
+body{
+    background-color: rgb(27, 27, 63);
+}
+* {
+    box-sizing: border-box;
+}
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    height: 70px;
+    border-bottom: solid 4px rgb(6, 8, 115);
+    padding: 0 20px;
+}
+.logo {
+    display: inline-block;
+    height: 60px;
+    margin-right: 20px;
+}
+.logo img {
+    height: 100%;
+}
+
+.menu {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+}
+.menu ul, .autenticacao ul {
+
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu ul li{
+
+    margin-right: 10px;
+    background-color: rgb(6, 8, 115);
+    border: solid 2px rgb(20, 5, 226);
+    border-radius: 2px;
+}
+.autenticacao ul li {
+    margin-right: 10px;
+    background-color: rgb(6, 8, 115);
+    border: solid 2px rgb(20, 5, 226);
+    border-radius: 2px;
+}
+
+.menu ul li a, .autenticacao ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 1.3em;
+    padding: 10px 15px;
+}
+
+.menu ul li:hover , .autenticacao ul li:hover {
+    background-color: rgb(27, 27, 63);
+    border: solid 2px rgb(6, 8, 115);;
+}
+
+.texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 80px;
+    font-weight: bold;
+    color: rgb(11, 124, 222);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.texto span{
+    position: relative;
+}
+.digitacao {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+.texto span::before{
+    content: "";
+    color: rgb(11, 124, 222);
+    animation: palavras 2s infinite;
+}

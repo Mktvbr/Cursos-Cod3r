@@ -6,88 +6,8 @@
     <title>COD3R</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/contato.css">
     <style>
-        body{
-            background-color: rgb(27, 27, 63);
-        }
-        * {
-            box-sizing: border-box;
-        }
-        .cabecalho {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: black;
-            height: 70px;
-            border-bottom: solid 4px rgb(6, 8, 115);
-            padding: 0 20px;
-        }
-        .logo {
-            display: inline-block;
-            height: 60px;
-            margin-right: 20px;
-        }
-        .logo img {
-            height: 100%;
-        }
-        
-        .menu {
-            display: flex;
-            flex-grow: 1;
-            justify-content: flex-start;
-        }
-        .menu ul, .autenticacao ul {
-
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .menu ul li{
-
-            margin-right: 10px;
-            background-color: rgb(6, 8, 115);
-            border: solid 2px rgb(20, 5, 226);
-            border-radius: 2px;
-        }
-        .autenticacao ul li {
-            margin-right: 10px;
-            background-color: rgb(6, 8, 115);
-            border: solid 2px rgb(20, 5, 226);
-            border-radius: 2px;
-        }
-        
-        .menu ul li a, .autenticacao ul li a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            font-size: 1.3em;
-            padding: 10px 15px;
-        }
-
-        .menu ul li:hover , .autenticacao ul li:hover {
-            background-color: rgb(27, 27, 63);
-            border: solid 2px rgb(6, 8, 115);;
-        }
-
-        .whatsapp {
-            position: absolute;
-            top: 50%;
-            left: 40%;
-            transform: translate(-50%, -50%);
-        }
-
-        .instagram {
-            position: absolute;
-            top: 50%;
-            left: 60%;
-            transform: translate(-50%, -50%);
-        }
-
-        .instagram img:hover, .whatsapp img:hover{
-            width: 220px;
-            height: 220px;
-        }
     </style>
 </head>
 <body>
@@ -157,16 +77,16 @@ function getCookie(cname) {
 
     //se nenhum cookie for encontrado irá retornar uma string vazia
     return "";
-  }
+}
 
 function checkCookie() {
     //usa a função getCookie para verificar se existe ou não o token
-        let verifyAutentication = getCookie("tokenAutentication");
+    let verifyAutentication = getCookie("tokenAutentication");
 
     //se existir token os botões de login e rigistro irão sumir
-        if (verifyAutentication != "") {
-        let div = document.querySelector(".autenticacao")
-        div.style.display = "none"
+    if (verifyAutentication != "") {
+    let div = document.querySelector(".autenticacao")
+    div.style.display = "none"
   }
 
 }    

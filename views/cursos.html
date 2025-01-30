@@ -6,161 +6,8 @@
     <title>COD3R</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-                body{
-            background-color: rgb(27, 27, 63);
-        }
-        * {
-            box-sizing: border-box;
-        }
-        .cabecalho {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: black;
-            height: 70px;
-            border-bottom: solid 4px rgb(6, 8, 115);
-            padding: 0 20px;
-        }
-        .logo {
-            display: inline-block;
-            height: 60px;
-            margin-right: 20px;
-        }
-        .logo img {
-            height: 100%;
-        }
-        
-        .menu {
-            display: flex;
-            flex-grow: 1;
-            justify-content: flex-start;
-        }
-        .menu ul, .autenticacao ul {
+    <link rel="stylesheet" href="../styles/cursos.css">
 
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .menu ul li{
-
-            margin-right: 10px;
-            background-color: rgb(6, 8, 115);
-            border: solid 2px rgb(20, 5, 226);
-            border-radius: 2px;
-        }
-        .autenticacao ul li {
-            margin-right: 10px;
-            background-color: rgb(6, 8, 115);
-            border: solid 2px rgb(20, 5, 226);
-            border-radius: 2px;
-        }
-        
-        .menu ul li a, .autenticacao ul li a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            font-size: 1.3em;
-            padding: 10px 15px;
-        }
-
-        .menu ul li:hover , .autenticacao ul li:hover {
-            background-color: rgbrgb(27, 27, 63);
-            border: solid 2px rgb(6, 8, 115);;
-        }
-
-        .wrapper{
-            width: 200px;
-            height: 60px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .circle{
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgb(11, 124, 222);
-            left: 15%;
-            transform-origin: 50%;
-            animation: circle .5s alternate infinite ease;
-        }
-        @keyframes circle {
-            0%{
-                top: 60px;
-                height: 5px;
-                border-radius: 50px 50px 25px 25px;
-                transform: scale(1.7);
-            }
-            40%{
-                height: 20px;
-                border-radius: 50%;
-                transform: scaleX(1);
-            }
-            100%{
-                top:0%;
-            }
-        }
-    
-        .circle:nth-child(2){
-                left:45%;
-                animation-delay: .2s;
-            }
-        .circle:nth-child(3){
-            left:auto;
-            right: 15%;
-            animation-delay: .3s;
-        }
-
-        .shadow{
-            width: 20px;
-            height: 4px;
-            border-radius: 50%;
-            background-color: rgba(0,0,0,.5);
-            position: absolute;
-            top: 62px;
-            transform-origin: 50%;
-            z-index: -1;
-            left: 15%;
-            filter: blur(1px);
-            animation: shadow .5s alternate infinite ease;
-        }
-
-        @keyframes shadow {
-            0%{
-                transform: scaleX(1.5);
-            }
-            40%{
-                transform: scaleX(1);
-                opacity: .7;
-            }
-            100%{
-                transform: scaleX(.2);
-                opacity: .4;
-            }
-        }
-        .shadow:nth-child(4){
-            left: 45%;
-            animation-delay: .2s;
-        }
-        .shadow:nth-child(5){
-            left: auto;
-            right: 15%;
-            animation-delay: .3s;
-        }
-        .wrapper span{
-            position: absolute;
-            top: 75px;
-            font-family: 'lato';
-            font-size: 20px;
-            letter-spacing: 12px;
-            color: rgb(11, 124, 222);
-        }
-    </style>
 </head>
 <body>
     <header class="cabecalho">
@@ -197,7 +44,7 @@
     <script>
 
    //irá pegar o token do cookie
-   function getCookie(cname) {
+function getCookie(cname) {
     let name = cname + "=";
 
     //irá ler e decodificar os cookies
@@ -210,30 +57,30 @@
       let c = ca[i];
 
     //verifica se o primeiro caractere do cookie é um espaço e já o remove
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
 
     //verifica a posição do cookie que tem o mesmo nome
-      if (c.indexOf(name) == 0) {
+    if (c.indexOf(name) == 0) {
 
     //remove o nome e mantém só o valor
-        return c.substring(name.length, c.length);
-      }
+    return c.substring(name.length, c.length);
     }
+}
 
     //se nenhum cookie for encontrado irá retornar uma string vazia
     return "";
-  }
+}
 
 function checkCookie() {
     //usa a função getCookie para verificar se existe ou não o token
-        let verifyAutentication = getCookie("tokenAutentication");
+    let verifyAutentication = getCookie("tokenAutentication");
 
     //se existir token os botões de login e rigistro irão sumir
-        if (verifyAutentication != "") {
-        let div = document.querySelector(".autenticacao")
-        div.style.display = "none"
+    if (verifyAutentication != "") {
+    let div = document.querySelector(".autenticacao")
+    div.style.display = "none"
   }
 
 }    
