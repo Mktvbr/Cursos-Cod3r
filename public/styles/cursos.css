@@ -1,4 +1,4 @@
-body{
+html, body{
     background-color: rgb(27, 27, 63);
 }
 * {
@@ -150,4 +150,57 @@ body{
     font-size: 20px;
     letter-spacing: 12px;
     color: rgb(11, 124, 222);
+}
+
+.cursos{
+    display: none;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.curso{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Verdana, sans-serif;
+    border: 1px solid #ddd;
+    width: 260px;
+    height: 300px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,.5);
+    margin: 5px 20px;
+    padding: 5px;
+}
+
+.curso img {
+    width: 100%;
+    height: auto;
+}
+
+.curso-info{
+    padding: 2px;
+    height: 110px;
+    overflow: hidden;
+    color: #ddd;
+}   
+
+.curso-info h1 {
+    font-size: 1.0em;
+    font-weight: 200;
+    margin: 0;
+}
+
+.preco {
+    text-align: right;
+    padding: 10px 0;
+}
+
+.preco-de {
+    text-decoration: line-through; 
+    color: #ff0000;
+}
+
+.preco-por {
+    color: #00ff62; 
 }
