@@ -4,12 +4,13 @@ const bodyParser = require('body-parser')
 const db = require('./db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-var path = require('node:path')
+const path = require('node:path')
 
 const port = 3003
 const app = express()
 
-app.use(session({secret: 's4g134gre25y5y54h6'}))
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
+
 
 app.engine('html', require('ejs').renderFile)
 app.use(express.json())
@@ -95,9 +96,6 @@ app.get('/cursos', (req,res) =>{
     res.render('cursos.html')
 })
 
-app.post('/',(req,res)=>{
-    res.render('index')
-})
 app.get('/login', (req,res) =>{
     res.render('login.html')
 })
