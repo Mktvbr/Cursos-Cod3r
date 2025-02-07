@@ -50,7 +50,7 @@ Autenticação
 •	POST /register: Registra um novo usuário.
 Página Inicial
 •	GET /: Exibe a interface inicial após autenticação.
-•	GET /cursos: Exibe uma animação de carregamento
+•	GET /cursos: Exibe uma animação de carregamento e logo após os cards de alguns cursos.
 ________________________________________
 Contato
 •	Nome: Mateus Luiz da Silva Rodrigues
